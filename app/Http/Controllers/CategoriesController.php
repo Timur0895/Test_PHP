@@ -23,7 +23,10 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
+        $request->validate([
+            'title' => 'required|min:2'
+        ]);
+
         Category::create([
             'title' => $request->title
         ]);
@@ -42,6 +45,10 @@ class CategoriesController extends Controller
     {
         $category = Category::find($id);
 
+         foreach ($category->materials as $item)
+        {
+            $item->delete();            
+        }
         $category->delete();
 
         return back();
@@ -49,6 +56,10 @@ class CategoriesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required|min:2'
+        ]);
+
         $category = Category::find($id);
 
         $category->update([
