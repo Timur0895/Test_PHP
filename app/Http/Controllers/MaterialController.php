@@ -87,9 +87,10 @@ class MaterialController extends Controller
 
     public function update(Request $request, $id)
     {
+        //dd($request);
         $request->validate([
             'type' => 'required',
-            'catefory' => 'required',
+            'category' => 'required',
             'title' =>'required|min:5',
             'authors' => 'required|min:2',
             'descriprion' => 'min:10'
@@ -104,6 +105,8 @@ class MaterialController extends Controller
             'authors' => $request->authors,
             'description' =>  $request->description
         ]);
+
+        //dd($item);
 
         return redirect('/');
     }

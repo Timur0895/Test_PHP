@@ -32,7 +32,7 @@
                         <td><a href="{{route('viewMaterial', ['id' => $item->id])}}">{{$item->title}}</a></td>
                         <td>{{$item->authors}}</td>
                         <td>{{$item->type}}</td>
-                        <td>{{$item->categori->title}}</td>
+                        <td>{{$item->category}}</td>
                         <td class="text-nowrap text-end">
                             <a href="{{route('editMaterial', ['id' => $item->id])}}" class="text-decoration-none me-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

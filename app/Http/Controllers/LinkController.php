@@ -14,7 +14,7 @@ class LinkController extends Controller
     {
         $request->validate([
             'title' => 'min:3|max:25',
-            'url' => 'required|min:6'
+            'url' => 'required|url'
         ]);
 
         $link = $request->url;

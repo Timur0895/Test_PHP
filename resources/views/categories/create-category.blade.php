@@ -1,7 +1,11 @@
 @extends('index');
 
 @section('content')
-<h1 class="my-md-5 my-4">Добавить категорию</h1>
+@if (isset($category))
+<h1 class="my-md-5 my-4">Обновить категорию</h1>
+@else
+<h1 class="my-md-5 my-4">Добавить категорию</h1>   
+@endif
 <div class="row">
     <div class="col-lg-5 col-md-8">
         <form
@@ -12,7 +16,10 @@
             @endif method="POST">
             @csrf
             <div class="form-floating mb-3">
-                <input name="title" type="text" class="form-control" placeholder="Напишите название" id="floatingName">
+                <input name="title" type="text" @if(isset($category)) value={{$category->title}} @endif class="@error('title') is-invalid @enderror form-control" placeholder="Напишите название" id="floatingName">
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 @if (isset($category))
                     <label for="floatingDescription">{{$category->title}}</label>
                 @else

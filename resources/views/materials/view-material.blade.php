@@ -1,7 +1,6 @@
 @extends('index');
 
 @section('content')
-
     <h1 class="my-md-5 my-4">{{$material->title}}</h1>
     <div class="row mb-3">
         <div class="col-lg-6 col-md-8">
@@ -15,7 +14,7 @@
             </div>
             <div class="d-flex text-break">
                 <p class="col fw-bold mw-25 mw-sm-30 me-2">Категория</p>
-                <p class="col">{{$material->categori->title}}</p>
+                <p class="col">{{$material->category}}</p>
             </div>
             <div class="d-flex text-break">
                 <p class="col fw-bold mw-25 mw-sm-30 me-2">Описание</p>
@@ -90,7 +89,10 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-floating mb-3">
-                                        <input name="title" type="text" class="form-control" placeholder="Добавьте подпись" id="floatingModalSignature">
+                                        <input name="title" type="text" class="@error('title') is-invalid @enderror form-control" placeholder="Добавьте подпись" id="floatingModalSignature">
+                                        @error('title')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <label for="floatingModalSignature">Подпись</label>
                                         <div class="invalid-feedback">
                                             Пожалуйста, заполните поле
@@ -98,7 +100,10 @@
                     
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input name="url" type="text" class="form-control" placeholder="Добавьте ссылку" id="floatingModalLink">
+                                        <input name="url" type="text" class="@error('url') is-invalid @enderror form-control" placeholder="Добавьте ссылку" id="floatingModalLink">
+                                        @error('url')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         <label for="floatingModalLink">Ссылка</label>
                                         <div class="invalid-feedback">
                                             Пожалуйста, заполните поле
